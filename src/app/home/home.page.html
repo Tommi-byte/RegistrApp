@@ -1,8 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="success">
     <ion-title>
-      Blank
+      Bienvenido (a) Tom
     </ion-title>
+
+    <ion-icon slot="end" style="margin-right: 20px; font-size: 35px;" name="menu-outline"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -17,4 +19,25 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        Mi Perfil
+      </ion-tab-button>
+      <ion-tab-button tab="radio">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Asistencias
+      </ion-tab-button>
+      <ion-tab-button tab="library">
+        <ion-icon name="hammer-outline"></ion-icon>
+        Configuración
+      </ion-tab-button>
+      <ion-tab-button tab="search" [routerLink]="['/login']" >
+        <ion-icon name="exit-outline"></ion-icon>
+        Salir
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

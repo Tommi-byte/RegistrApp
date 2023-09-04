@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+
+
+  <div class="formulario">
+
+
+    <ion-img src="../../assets/img/logo.png" alt=""></ion-img>
+
+
+    <ion-input [(ngModel)]="userLoginModal.username" label="Usuario" label-placement="floating" fill="outline"
+      placeholder="Escribe tu usuario Duoc"></ion-input>
+
+    <ion-input [(ngModel)]="userLoginModal.password" type="password" label="Contraseña" label-placement="floating"
+      fill="outline" placeholder="Escribe tu contraseña"></ion-input>
+
+    <ion-button  color="secondary" (click)="userLogin(userLoginModal)">
+      Iniciar Sesión
+    </ion-button>
+
+
+
+    <br>
+    <br>
+    <a  id="present-alert" style="text-align: center; margin: 10px; cursor: pointer;"> <span> ¿Olvidaste tu
+        contraseña? </span> Toca Aquí!</a>
+    <ion-alert trigger="present-alert" header="Usuario de prueba" message="
+      Usuario: Admin 
+      Password: 1234" [buttons]="alertButtons"></ion-alert>
+
+
+
+
+  </div>
+
+
+</ion-content>
