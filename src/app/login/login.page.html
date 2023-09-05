@@ -13,11 +13,10 @@
     <ion-input [(ngModel)]="userLoginModal.password" type="password" label="Contraseña" label-placement="floating"
       fill="outline" placeholder="Escribe tu contraseña"></ion-input>
 
-    <ion-button  color="secondary" (click)="userLogin(userLoginModal)">
-      Iniciar Sesión
-    </ion-button>
 
-
+    <ion-card #card (click)="userLogin(userLoginModal)" class="ion-text-center">
+      <ion-card-content>Iniciar Sesión</ion-card-content>
+    </ion-card>
 
     <br>
     <br>

@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonCard, IonicModule } from '@ionic/angular';
 import { Router, NavigationExtras, RouterLinkWithHref } from '@angular/router';
 import { IUserLogin } from '../models/IUserLogin';
 import { UserModel } from '../models/UserModel';
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
 
 
 @Component({
@@ -15,6 +18,10 @@ import { UserModel } from '../models/UserModel';
 
 
 export class LoginPage implements OnInit {
+
+  @ViewChild(IonCard, { read: ElementRef }) card : ElementRef<HTMLIonButtonElement>;
+
+  private animation: Animation;
 
   listUser: UserModel[] = [
     new UserModel('Jorge','Gomez','jgomez@gmail.com',undefined,'estudiante','jgomez','jorge123'),
@@ -30,11 +37,25 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private animationCtrl: AnimationController) { }
 
   ngOnInit() {
     this.userLoginModalRestart();
+
   }
+
+  ngAfterViewInit() {
+    this.animation = this.animationCtrl
+      .create()
+      .addElement(this.card.nativeElement)
+      .duration(3000)
+      .iterations(Infinity)
+      .direction('alternate')
+      .fromTo('background', 'blue', 'var(--background)');
+
+    this.animation.play();
+  }
+
 
   userLogin(userLoginInfo: IUserLogin): boolean{
     for(let i = 0; i < this.listUser.length; i++){
